@@ -1,0 +1,76 @@
+{
+  "application": "CampusCollect",
+  "services": [
+    {
+      "nom": "catalogue-service",
+      "responsabilite": "Gerer les produits, les prix et les stocks disponibles sur le campus.",
+      "commandes": [
+        {
+          "nom": "AjouterProduit",
+          "description": "Ajoute un nouveau produit au catalogue.",
+          "donnees": {
+            "produitId": "string",
+            "nom": "string",
+            "categorie": "string",
+            "prix": "number",
+            "stockDisponible": "number",
+            "pointVenteId": "string"
+          }
+        },
+        {
+          "nom": "ModifierStockProduit",
+          "description": "Met a jour le stock disponible d'un produit.",
+          "donnees": {
+            "produitId": "string",
+            "nouveauStockDisponible": "number"
+          }
+        }
+      ]
+    },
+    {
+      "nom": "commande-service",
+      "responsabilite": "Gerer les paniers, la validation des commandes et leur statut.",
+      "commandes": [
+        {
+          "nom": "CreerCommande",
+          "description": "Cree une commande a partir du panier d'un utilisateur.",
+          "donnees": {
+            "commandeId": "string",
+            "utilisateurId": "string",
+            "lignes": [
+              {
+                "produitId": "string",
+                "quantite": "number"
+              }
+            ],
+            "creneauRetrait": "string"
+          }
+        },
+        {
+          "nom": "ChangerStatutCommande",
+          "description": "Change le statut d'une commande.",
+          "donnees": {
+            "commandeId": "string",
+            "nouveauStatut": "EN_PREPARATION | PRETE | RETIREE | ANNULEE"
+          }
+        }
+      ]
+    },
+    {
+      "nom": "notification-service",
+      "responsabilite": "Preparer les notifications envoyees aux utilisateurs.",
+      "commandes": [
+        {
+          "nom": "CreerNotification",
+          "description": "Prepare une notification pour un utilisateur.",
+          "donnees": {
+            "notificationId": "string",
+            "utilisateurId": "string",
+            "type": "COMMANDE_CREEE | COMMANDE_PRETE | COMMANDE_ANNULEE",
+            "message": "string"
+          }
+        }
+      ]
+    }
+  ]
+}

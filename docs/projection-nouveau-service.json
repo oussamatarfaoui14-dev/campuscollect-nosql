@@ -1,0 +1,51 @@
+{
+  "application": "CampusCollect",
+  "nouveauService": {
+    "nom": "statistique-service",
+    "objectif": "Construire des statistiques de vente par produit, categorie et point de vente."
+  },
+  "source": {
+    "serviceEmetteur": "commande-service",
+    "evenement": "CommandeRetiree",
+    "donneesSource": {
+      "commandeId": "cmd-001",
+      "dateRetrait": "2026-10-08T12:35:00Z",
+      "lignes": [
+        {
+          "produitId": "prod-001",
+          "nomProduitReplica": "Sandwich poulet",
+          "prixUnitaireReplica": 4.5,
+          "quantite": 2
+        }
+      ],
+      "montantTotal": 9
+    }
+  },
+  "projection": {
+    "description": "Le service statistique transforme les lignes de commande en indicateurs agreges.",
+    "agregatCible": {
+      "nomAgregat": "StatistiquesProduitJour",
+      "exemple": {
+        "date": "2026-10-08",
+        "produitId": "prod-001",
+        "nomProduit": "Sandwich poulet",
+        "quantiteVendue": 2,
+        "chiffreAffaires": 9,
+        "nombreCommandes": 1
+      }
+    }
+  },
+  "requeteExemple": {
+    "description": "Afficher les 5 produits les plus vendus pour une date donnee.",
+    "pseudoMongoQuery": {
+      "collection": "statistiquesProduitJour",
+      "filter": {
+        "date": "2026-10-08"
+      },
+      "sort": {
+        "quantiteVendue": -1
+      },
+      "limit": 5
+    }
+  }
+}

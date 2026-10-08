@@ -1,0 +1,54 @@
+{
+  "application": "CampusCollect",
+  "agregats": [
+    {
+      "service": "catalogue-service",
+      "nomAgregat": "Produit",
+      "exemple": {
+        "produitId": "prod-001",
+        "nom": "Sandwich poulet",
+        "categorie": "repas",
+        "prix": 4.5,
+        "stockDisponible": 25,
+        "pointVente": {
+          "pointVenteId": "pv-restaurant-a",
+          "nom": "Restaurant universitaire A"
+        },
+        "dateDerniereModification": "2026-10-08T10:15:00Z"
+      }
+    },
+    {
+      "service": "commande-service",
+      "nomAgregat": "Commande",
+      "exemple": {
+        "commandeId": "cmd-001",
+        "utilisateurId": "etu-123",
+        "statut": "EN_PREPARATION",
+        "lignes": [
+          {
+            "produitId": "prod-001",
+            "nomProduitReplica": "Sandwich poulet",
+            "prixUnitaireReplica": 4.5,
+            "quantite": 2
+          }
+        ],
+        "montantTotal": 9,
+        "creneauRetrait": "2026-10-08T12:30:00Z",
+        "dateCreation": "2026-10-08T10:20:00Z"
+      }
+    },
+    {
+      "service": "notification-service",
+      "nomAgregat": "Notification",
+      "exemple": {
+        "notificationId": "notif-001",
+        "utilisateurId": "etu-123",
+        "commandeId": "cmd-001",
+        "type": "COMMANDE_CREEE",
+        "message": "Votre commande cmd-001 est en preparation.",
+        "statutEnvoi": "A_ENVOYER",
+        "dateCreation": "2026-10-08T10:21:00Z"
+      }
+    }
+  ]
+}

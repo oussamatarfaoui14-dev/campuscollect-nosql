@@ -1,0 +1,63 @@
+{
+  "application": "CampusCollect",
+  "principe": "Les services ne lisent pas directement la base de donnees des autres services. Ils recoivent des evenements et gardent des repliques locales des donnees utiles.",
+  "evenements": [
+    {
+      "nom": "ProduitCree",
+      "objectif": "Creer une replique produit dans le service commande.",
+      "serviceEmetteur": "catalogue-service",
+      "serviceRecepteur": "commande-service",
+      "donneeAgregatModifiee": "produit",
+      "nouvelleValeur": {
+        "produitId": "prod-001",
+        "nom": "Sandwich poulet",
+        "prix": 4.5,
+        "stockDisponible": 25,
+        "pointVenteId": "pv-restaurant-a"
+      },
+      "repliqueDansServiceRecepteur": {
+        "nomAgregat": "ProduitCatalogueReplica",
+        "donnees": {
+          "produitId": "prod-001",
+          "nom": "Sandwich poulet",
+          "prix": 4.5,
+          "stockDisponible": 25,
+          "actif": true
+        }
+      }
+    },
+    {
+      "nom": "StockProduitModifie",
+      "objectif": "Mettre a jour le stock de la replique produit dans le service commande.",
+      "serviceEmetteur": "catalogue-service",
+      "serviceRecepteur": "commande-service",
+      "donneeAgregatModifiee": "stockDisponible",
+      "nouvelleValeur": 18,
+      "repliqueDansServiceRecepteur": {
+        "nomAgregat": "ProduitCatalogueReplica",
+        "donnees": {
+          "produitId": "prod-001",
+          "stockDisponible": 18,
+          "dateDerniereSynchronisation": "2026-10-08T10:30:00Z"
+        }
+      }
+    },
+    {
+      "nom": "CommandePrete",
+      "objectif": "Informer le service notification qu'une commande peut etre retiree.",
+      "serviceEmetteur": "commande-service",
+      "serviceRecepteur": "notification-service",
+      "donneeAgregatModifiee": "statut",
+      "nouvelleValeur": "PRETE",
+      "repliqueDansServiceRecepteur": {
+        "nomAgregat": "CommandeNotificationReplica",
+        "donnees": {
+          "commandeId": "cmd-001",
+          "utilisateurId": "etu-123",
+          "statut": "PRETE",
+          "creneauRetrait": "2026-10-08T12:30:00Z"
+        }
+      }
+    }
+  ]
+}
