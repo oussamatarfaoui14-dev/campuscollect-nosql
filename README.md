@@ -3,9 +3,9 @@
 ## Equipe
 
 - Etudiant 1 : Oussama Tarfaoui
-- Etudiant 2 : a completer
-- Etudiant 3 : optionnel
-- Etudiant 4 : optionnel
+- Etudiant 2 : Abderrazaq MAKRAN
+- Etudiant 3 : Chahed LOUSSAYEF
+- Etudiant 4 : Khaled DJAIT
 
 ## Idee generale
 
