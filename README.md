@@ -2,7 +2,7 @@
 
 ## Equipe
 
-- Etudiant 1 : a completer
+- Etudiant 1 : Oussama Tarfaoui
 - Etudiant 2 : a completer
 - Etudiant 3 : optionnel
 - Etudiant 4 : optionnel
