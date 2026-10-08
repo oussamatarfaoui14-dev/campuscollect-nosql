@@ -34,8 +34,42 @@ mettre a jour des repliques locales des donnees necessaires a leur autonomie.
 - `docs/evenements-replication.json` : evenements entre services et repliques.
 - `docs/projection-nouveau-service.json` : projection vers un nouveau service.
 
+## Avancement par etape
+
+### Etape 1 : initier le projet
+
+- Depot Git cree.
+- Collaborateur `charroux` invite.
+- Description du projet redigee dans ce README.
+- Equipe indiquee dans la section `Equipe`.
+
+### Etape 2 : definir les services
+
+Les services et les commandes associees sont definis dans
+`docs/services-commandes.json`.
+
+### Etape 3 : definir les agregats
+
+Les agregats principaux de chaque service sont definis dans
+`docs/agregats-services.json`.
+
+### Etape 4 : decoupler les services
+
+Les evenements entre services et les repliques locales sont definis dans
+`docs/evenements-replication.json`.
+
+Le fichier contient au moins :
+
+- un evenement de creation de replique : `ProduitCree`.
+- un evenement de mise a jour de replique : `StockProduitModifie`.
+
+### Etape 6 : projection vers un nouveau service
+
+La projection vers le nouveau `statistique-service` est definie dans
+`docs/projection-nouveau-service.json`.
+
 ## Depot Git
 
-Le depot Git local est initialise dans ce dossier. Une fois le depot distant
-cree sur GitHub ou GitLab, il faudra inviter l'utilisateur `charroux` comme
-collaborateur.
+Le depot distant est disponible sur GitHub :
+
+https://github.com/oussamatarfaoui14-dev/campuscollect-nosql
